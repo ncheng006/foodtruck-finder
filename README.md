@@ -1,6 +1,6 @@
 # Food Truck Finder
 
-Food Truck Finder is a web application that helps you discover nearby food trucks in Palo Alto. The application consists of a backend API built with Flask and a frontend built with React.js.
+Food Truck Finder is a web application that helps you discover nearby food trucks in San Francisco
 
 ## Table of Contents
 
