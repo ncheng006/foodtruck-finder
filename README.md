@@ -24,7 +24,7 @@ Food Truck Finder is a web application that helps you find nearby food trucks in
 3. Install the required Python packages:
    - pip install -r requirements.txt
 4. Set up the SQLite database:
-  - python setup_db.py
+  - python db_setup.py
 5. Start the Flask Server
   - python app.py
 
