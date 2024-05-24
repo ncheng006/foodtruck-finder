@@ -17,7 +17,8 @@ const App = () => {
   const [radius, setRadius] = useState(5);
   const [foodtrucks, setFoodtrucks] = useState([]);
   const [mapCenter, setMapCenter] = useState([37.7749, -122.4194]);
-  const fetchFoodTrucks = async (lat, lon, radius) => {
+
+  const getFoodTrucks = async (lat, lon, radius) => {
     try {
       const response = await axios.get(`http://localhost:5000/api/foodtrucks`, {
         params: { lat, lon, radius }
@@ -30,34 +31,34 @@ const App = () => {
     }
   };
 
-  const handleLocationChange = (e) => {
+  const handlePosChange = (e) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
-  const handleRadiusChange = (e) => {
+  const handleRadius = (e) => {
     setRadius(e.target.value);
   };
 
   const handleSubmit = () => {
-    fetchFoodTrucks(location.lat, location.lon, radius);
+    getFoodTrucks(location.lat, location.lon, radius);
   };
 
-  const handleUseCurrentLocation = () => {
+  const handleCurrentPos = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
       setLocation({ lat: latitude, lon: longitude });
-      fetchFoodTrucks(latitude, longitude, radius);
+      getFoodTrucks(latitude, longitude, radius);
     });
   };
 
   return (
     <Container>
       <h1>Food Truck Finder</h1>
-      <TextField name="lat" label="Latitude" value={location.lat} onChange={handleLocationChange} />
-      <TextField name="lon" label="Longitude" value={location.lon} onChange={handleLocationChange} />
-      <TextField label="Radius (km)" value={radius} onChange={handleRadiusChange} />
+      <TextField name="lat" label="Latitude" value={location.lat} onChange={handlePosChange} />
+      <TextField name="lon" label="Longitude" value={location.lon} onChange={handlePosChange} />
+      <TextField label="Radius (km)" value={radius} onChange={handleRadius} />
       <Button onClick={handleSubmit}>Find Food Trucks</Button>
-      <Button onClick={handleUseCurrentLocation}>Use Current Location</Button>
+      <Button onClick={handleCurrentPos}>Use Current Location</Button>
       <MapContainer center={mapCenter} zoom={13} style={{ height: "400px", width: "100%" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS foodtrucks (
 
 with open('food-truck-data.csv', 'r') as file:
     reader = csv.reader(file)
-    next(reader)  # Skip header row
+    next(reader) 
     for row in reader:
         name = row[1]
         latitude = row[14]

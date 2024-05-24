@@ -7,7 +7,6 @@ from math import sin, cos, sqrt, atan2, radians
 app = Flask(__name__)
 CORS(app)
 
-# Approximate radius of earth in km
 R = 6373.0
 
 def calculate_distance(lat1, lon1, lat2, lon2):
@@ -20,8 +19,7 @@ def calculate_distance(lat1, lon1, lat2, lon2):
     return distance
 
 @app.route('/api/foodtrucks', methods=['GET'])
-def get_foodtrucks():
-    #check if the the parameters are convertible to floats and not None
+def getfoodtrucks():
     try:
         user_lat = float(request.args.get('lat'))
         user_lon = float(request.args.get('lon'))
