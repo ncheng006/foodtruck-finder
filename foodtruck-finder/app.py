@@ -21,10 +21,13 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
 @app.route('/api/foodtrucks', methods=['GET'])
 def get_foodtrucks():
-    user_lat = float(request.args.get('lat'))
-    user_lon = float(request.args.get('lon'))
-    radius = float(request.args.get('radius', 5))
-
+    #check if the the parameters are convertible to floats and not None
+    try:
+        user_lat = float(request.args.get('lat'))
+        user_lon = float(request.args.get('lon'))
+        radius = float(request.args.get('radius', 5))
+    except (ValueError, TypeError):
+        return jsonify({'error': 'Invalid latitude or longitude'}), 400
     conn = sqlite3.connect('foodtrucks.db')
     cursor = conn.cursor()
     cursor.execute("SELECT name, Latitude, Longitude FROM foodtrucks")
