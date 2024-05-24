@@ -1,6 +1,6 @@
 # Food Truck Finder
 
-Food Truck Finder is a web application that helps you discover nearby food trucks in San Francisco
+Food Truck Finder is a web application that helps you find nearby food trucks in San Francisco
 
 ## Table of Contents
 
