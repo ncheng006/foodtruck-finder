@@ -5,7 +5,7 @@ import sqlite3
 from math import sin, cos, sqrt, atan2, radians
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 R = 6373.0
 
